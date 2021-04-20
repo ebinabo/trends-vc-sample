@@ -27,8 +27,8 @@ export default function Filter() {
                             type="text"
                             name="search"
                             id="search"
-                            className="focus:ring-amber-500 focus:border-amber-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md bg-none text-gray-400"
-                            placeholder="Type here to search"
+                            className="focus:ring-amber-500 focus:border-amber-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md bg-transparent text-gray-400"
+                            placeholder="Type here to search..."
                         />
                     </div>
                 </div>
