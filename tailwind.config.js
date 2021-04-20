@@ -1,4 +1,4 @@
-const { screens } = require("tailwindcss/defaultTheme")
+const { fontFamily, screens } = require("tailwindcss/defaultTheme")
 const colors = require("tailwindcss/colors")
 
 module.exports = {
@@ -21,6 +21,9 @@ module.exports = {
                     700: "#CC3F1F",
                 },
             },
+        },
+        fontFamily: {
+            sans: ["Inter", ...fontFamily.sans],
         },
         screens: {
             xs: "414px",

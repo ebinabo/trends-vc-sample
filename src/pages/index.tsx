@@ -1,3 +1,4 @@
+import Head from "next/head"
 import Hero from "../components/Hero"
 import Navigation from "../components/Navigation"
 import Results from "../components/Results"
@@ -7,6 +8,9 @@ import Newsletter from "../components/Newsletter"
 export default function index() {
     return (
         <div className="bg-black">
+            <Head>
+                <title>Trends.vc • Reports</title>
+            </Head>
             <Navigation />
             <Hero />
             <Filter />

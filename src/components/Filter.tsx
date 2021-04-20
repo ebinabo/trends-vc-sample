@@ -12,7 +12,7 @@ export default function Filter() {
                 <div className="flex-grow w-full">
                     <label
                         htmlFor="search"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-gray-100"
                     >
                         Search
                     </label>
@@ -27,7 +27,7 @@ export default function Filter() {
                             type="text"
                             name="search"
                             id="search"
-                            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                            className="focus:ring-amber-500 focus:border-amber-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md bg-none text-gray-400"
                             placeholder="Type here to search"
                         />
                     </div>
@@ -37,12 +37,15 @@ export default function Filter() {
                     <Listbox value={selected} onChange={setSelected}>
                         {({ open }) => (
                             <>
-                                <Listbox.Label className="block text-sm font-medium text-gray-700">
+                                <Listbox.Label className="block text-sm font-medium text-gray-100">
                                     Categories
                                 </Listbox.Label>
                                 <div className="mt-1 relative">
-                                    <Listbox.Button className="relative w-full py-2 px-4 flex justify-between bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
-                                        <div className="flex items-center space-x-2">
+                                    <Listbox.Button
+                                        className="relative w-full py-2 px-4 flex justify-between bg-none rounded-lg shadow-md border border-gray-300 focus:outline-none
+                                        cursor-default focus:ring-amber-500 focus:border-amber-500 focus-visible:ring-amber-500 focus-visible:border-amber-500 sm:text-sm"
+                                    >
+                                        <div className="flex items-center space-x-2 text-gray-400">
                                             <span>
                                                 <selected.icon className="w-5 h-5" />
                                             </span>
@@ -50,7 +53,7 @@ export default function Filter() {
                                         </div>
                                         <span>
                                             <SelectorIcon
-                                                className="h-5 w-5"
+                                                className="h-5 w-5 text-gray-400"
                                                 aria-hidden="true"
                                             />
                                         </span>
@@ -65,7 +68,7 @@ export default function Filter() {
                                     >
                                         <Listbox.Options
                                             static
-                                            className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                                            className="absolute w-full py-1 mt-1 overflow-auto text-base bg-gray-600 rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
                                         >
                                             {categories.map(category => (
                                                 <Listbox.Option
