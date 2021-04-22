@@ -20,13 +20,13 @@ function Record({ record }) {
     return (
         <div
             key={record.Topic}
-            className="bg-gray-dark h-48 rounded-md px-4 py-3 flex flex-col justify-between items-start"
+            className="bg-gray-dark rounded-md px-4 py-3 flex flex-col justify-between items-start"
         >
             <div>
                 <p className="text-2xl text-gray-100 font-semibold">
                     {record.Topic}
                 </p>
-                <div className="divide-x divide-gray-600 flex flex-wrap">
+                <div className="divide-x divide-gray-600 flex flex-wrap mt-1.5">
                     {record.Tags.map((tag, index) => (
                         <span
                             className={`${
@@ -42,7 +42,7 @@ function Record({ record }) {
             <a
                 href={record.Link}
                 target="_blank"
-                className="bg-gray-mid bg-opacity-30 hover:bg-opacity-75 text-gray-100 px-4 py-2 rounded-md"
+                className="bg-gray-mid bg-opacity-30 hover:bg-opacity-75 mt-8 text-gray-100 px-4 py-2 rounded-md"
             >
                 Get Report
             </a>
