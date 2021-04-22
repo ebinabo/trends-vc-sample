@@ -1,10 +1,25 @@
-export default function Results({ records }) {
+import { useEffect, useState } from "react"
+import results from "../data/results"
+
+export default function Results() {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        fetch("/api/get-data").then(res =>
+            res.json().then(data => setData(data))
+        )
+    }, [])
+
     return (
         <div className="max-w-7xl mx-auto px-4">
             <div className="mt-8 grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-                {records.map(record => (
-                    <Record key={record.id} record={record} />
-                ))}
+                {data.length ? (
+                    data.map(record => (
+                        <Record key={record.id} record={record} />
+                    ))
+                ) : (
+                    <div>Loading...</div>
+                )}
             </div>
 
             <div className="mt-8 grid sm:justify-center">
@@ -20,7 +35,7 @@ function Record({ record }) {
     return (
         <div
             key={record.Topic}
-            className="bg-gray-dark h-48 rounded-md px-4 py-3 flex flex-col justify-between items-start"
+            className="bg-gray-dark h-40 rounded-md px-4 py-3 flex flex-col justify-between items-start"
         >
             <div>
                 <p className="text-2xl text-gray-100 font-semibold">
