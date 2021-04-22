@@ -26,10 +26,12 @@ function Record({ record }) {
                 <p className="text-2xl text-gray-100 font-semibold">
                     {record.Topic}
                 </p>
-                <div className="divide-x divide-gray-600 -mx-2">
-                    {record.Tags.map(tag => (
+                <div className="divide-x divide-gray-600 flex flex-wrap">
+                    {record.Tags.map((tag, index) => (
                         <span
-                            className="px-2 uppercase font-bold tracking-wide text-xs text-gray-600"
+                            className={`${
+                                index === 0 ? "pl-0" : "pl-2"
+                            } pr-2 uppercase font-bold tracking-wide text-xs text-gray-600`}
                             key={tag}
                         >
                             {tag}
