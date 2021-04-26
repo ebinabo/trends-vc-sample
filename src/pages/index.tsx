@@ -37,7 +37,16 @@ export async function getStaticProps() {
 
     let records = await base("👣 Learning Paths").select().firstPage()
 
-    let data = records.map(record => ({ id: record.id, ...record.fields }))
+    let data = records.map(record => ({
+        id: record.id,
+        ...record.fields,
+        previewLink: record.fields.Link
+            ? `https://trends.vc/${(record.fields.Link as string)
+                  .split("/")
+                  .pop()
+                  .replace("pro-", "")}`
+            : null,
+    }))
 
     return {
         props: { data },

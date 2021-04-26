@@ -53,13 +53,15 @@ function Record({ record }) {
                 >
                     Get Report
                 </a>
-                <a
-                    href="/"
-                    target="_blank"
-                    className="text-white text-opacity-60 hover:underline"
-                >
-                    Preview Report
-                </a>
+                {record.previewLink ? (
+                    <a
+                        href={record.previewLink}
+                        target="_blank"
+                        className="text-white text-opacity-60 hover:underline"
+                    >
+                        Preview Report
+                    </a>
+                ) : null}
             </div>
         </div>
     )
