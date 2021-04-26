@@ -1,13 +1,17 @@
-import { Listbox, Transition } from "@headlessui/react"
-import { CheckIcon, SearchIcon, SelectorIcon } from "@heroicons/react/outline"
-import { Fragment, useState } from "react"
+import { SearchIcon } from "@heroicons/react/outline"
+import { Dispatch, SetStateAction } from "react"
 import categories from "../data/categories"
 
-export default function Filter() {
-    const [selected, setSelected] = useState(categories[0])
+export default function Filter({
+    state,
+}: {
+    state: [string, Dispatch<SetStateAction<string>>]
+}) {
+    const [selected, setSelected] = state
 
     return (
         <div className="max-w-7xl mx-auto px-4">
+            {/* CONSIDER REMOVING PARENT DIV AND STYLING */}
             <div className="flex flex-col md:flex-row items-baseline md:space-x-8 space-y-4 md:space-y-0">
                 <div className="flex-grow w-full">
                     <label
@@ -32,83 +36,21 @@ export default function Filter() {
                         />
                     </div>
                 </div>
+            </div>
 
-                <div className="w-full md:w-72">
-                    <Listbox value={selected} onChange={setSelected}>
-                        {({ open }) => (
-                            <>
-                                <Listbox.Label className="block text-sm font-medium text-gray-100">
-                                    Categories
-                                </Listbox.Label>
-                                <div className="mt-1 relative">
-                                    <Listbox.Button
-                                        className="relative w-full py-2 px-4 flex justify-between bg-none rounded-lg shadow-md border border-gray-300 focus:outline-none
-                                        cursor-default focus:ring-amber-500 focus:border-amber-500 focus-visible:ring-amber-500 focus-visible:border-amber-500 sm:text-sm"
-                                    >
-                                        <div className="flex items-center space-x-2 text-gray-400">
-                                            <span>
-                                                <selected.icon className="w-5 h-5" />
-                                            </span>
-                                            <span>{selected.label}</span>
-                                        </div>
-                                        <span>
-                                            <SelectorIcon
-                                                className="h-5 w-5 text-gray-400"
-                                                aria-hidden="true"
-                                            />
-                                        </span>
-                                    </Listbox.Button>
-
-                                    <Transition
-                                        show={open}
-                                        as={Fragment}
-                                        leave="transition ease-in duration-100"
-                                        leaveFrom="opacity-100"
-                                        leaveTo="opacity-0"
-                                    >
-                                        <Listbox.Options
-                                            static
-                                            className="absolute w-full py-1 mt-1 overflow-auto text-base bg-gray-50 rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-                                        >
-                                            {categories.map(category => (
-                                                <Listbox.Option
-                                                    value={category}
-                                                    key={category.label}
-                                                >
-                                                    {({ selected, active }) => (
-                                                        <>
-                                                            <div
-                                                                className={`${
-                                                                    active
-                                                                        ? "bg-gray-300"
-                                                                        : ""
-                                                                } flex items-center justify-between px-4 py-2`}
-                                                            >
-                                                                <div className="flex space-x-2">
-                                                                    <span>
-                                                                        <category.icon className="w-5 h-5" />
-                                                                    </span>
-                                                                    <span>
-                                                                        {
-                                                                            category.label
-                                                                        }
-                                                                    </span>
-                                                                </div>
-                                                                {selected ? (
-                                                                    <CheckIcon className="w-5 h-5" />
-                                                                ) : null}
-                                                            </div>
-                                                        </>
-                                                    )}
-                                                </Listbox.Option>
-                                            ))}
-                                        </Listbox.Options>
-                                    </Transition>
-                                </div>
-                            </>
-                        )}
-                    </Listbox>
-                </div>
+            <div className="flex overflow-scroll md:overflow-hidden md:justify-center space-x-4 md:flex-wrap">
+                {categories.map(category => (
+                    <button
+                        key={category.label}
+                        onClick={() => setSelected(category.label)}
+                        className={`flex flex-shrink-0 items-center text-white md:text-sm border mt-4 mb-4 md:mb-0 px-4 py-2 md:px-2.5 md:py-0.5 rounded-full focus:outline-none ${
+                            selected === category.label ? "bg-amber-500" : ""
+                        }`}
+                    >
+                        <category.icon className=" w-6 h-6 md:w-4 md:h-4 mr-2" />
+                        {category.label}
+                    </button>
+                ))}
             </div>
         </div>
     )

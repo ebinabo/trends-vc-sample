@@ -37,7 +37,7 @@ const categories: {
     { label: "Product", icon: CubeIcon },
     { label: "Sales", icon: CashIcon },
     { label: "Services", icon: ViewGridAddIcon },
-    { label: "Subscription", icon: RefreshIcon },
+    { label: "Subscriptions", icon: RefreshIcon },
 ]
 
 export default categories

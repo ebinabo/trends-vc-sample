@@ -1,5 +1,6 @@
+// ALTERNATE VERSION PULLS DATA AT RUN TIME RATHER THAN AT BUILD TIME
+
 import { useEffect, useState } from "react"
-import results from "../data/results"
 
 export default function Results() {
     const [data, setData] = useState([])

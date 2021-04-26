@@ -5,8 +5,11 @@ import Results from "../components/Results"
 import Filter from "../components/Filter"
 import Newsletter from "../components/Newsletter"
 import Airtable from "airtable"
+import { useState } from "react"
 
 export default function Home({ data }) {
+    const categoryState = useState("Crypto")
+
     return (
         <div className="bg-black">
             <Head>
@@ -14,8 +17,8 @@ export default function Home({ data }) {
             </Head>
             <Navigation />
             <Hero />
-            <Filter />
-            <Results records={data} />
+            <Filter state={categoryState} />
+            <Results records={data} selected={categoryState[0]} />
             <Newsletter />
             <p className="text-center px-4 text-white pb-6">
                 &copy; Copyright Trends.vc 2021, All rights reserved.
